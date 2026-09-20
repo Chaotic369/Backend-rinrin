@@ -1,0 +1,16 @@
+{
+  "name": "ringtone-backend",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Backend for Ringtone Maker: YouTube search proxy + audio download",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+}

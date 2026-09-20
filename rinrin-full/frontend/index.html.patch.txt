@@ -1,0 +1,44 @@
+const YOUTUBE_API_KEY = 'AIzaSyDIQlnboovATDYq2myY3MaG3wkFEwBZIFU';
+===SPLIT===
+const BACKEND_URL = 'https://YOUR-SERVICE-NAME.onrender.com';
+===BLOCK===
+const res = await fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=5&q=${encodeURIComponent(query)}&type=video&key=${YOUTUBE_API_KEY}`);
+===SPLIT===
+const res = await fetch(`${BACKEND_URL}/api/search?q=${encodeURIComponent(query)}`);
+===BLOCK===
+const backendUrl = `https://your-custom-backend.com/api/yt?url=${encodeURIComponent(url)}`;
+===SPLIT===
+const backendUrl = `${BACKEND_URL}/api/yt?url=${encodeURIComponent(url)}`;
+===BLOCK===
+if (backendUrl.includes('your-custom-backend.com')) {
+===SPLIT===
+if (backendUrl.includes('YOUR-SERVICE-NAME')) {
+===BLOCK===
+const response = await fetch(backendUrl);
+===SPLIT===
+var ctrl = new AbortController();
+                          var abortTimer = setTimeout(() => ctrl.abort(), 180000);
+                          ytStatus.innerText = 'Fetching audio... the first request can take up to a minute while the server wakes up.';
+                          var response;
+                          try {
+                            response = await fetch(backendUrl, { signal: ctrl.signal });
+                          } finally {
+                            clearTimeout(abortTimer);
+                          }
+===BLOCK===
+if (!response.ok) throw new Error('Failed to fetch from backend');
+===SPLIT===
+if (!response.ok) {
+                var errMsg = 'Failed to fetch from backend';
+                try {
+                  var errData = await response.json();
+                  if (errData && errData.error) errMsg = errData.error;
+                } catch (jsonErr) {}
+                throw new Error(errMsg);
+              }
+===BLOCK===
+const file = new File([blob], 'youtube_audio.mp3', { type: blob.type || 'audio/mp3' });
+===SPLIT===
+var ytTitle = '';
+              try { ytTitle = decodeURIComponent(response.headers.get('X-Title') || ''); } catch (titleErr) {}
+              const file = new File([blob], (sanitizeName(ytTitle) || 'youtube_audio') + '.mp3', { type: blob.type || 'audio/mp3' });

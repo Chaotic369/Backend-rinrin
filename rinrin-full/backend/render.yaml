@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: ringtone-backend
+    runtime: docker
+    plan: free
+    healthCheckPath: /health
+    autoDeploy: true
+    envVars:
+      - key: YOUTUBE_API_KEY
+        sync: false
